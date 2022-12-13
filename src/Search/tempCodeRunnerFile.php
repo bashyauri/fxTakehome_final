@@ -1,0 +1,2 @@
+<?php
+$counter+=1;
