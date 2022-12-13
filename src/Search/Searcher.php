@@ -10,7 +10,7 @@ class Searcher
 
     public function add(array $property): void
     {
-        $count = 0;
+      
        
         for ($i=0; $i < count($property); $i++) { 
            
