@@ -92,7 +92,7 @@ class Searcher
         }
         // if room required is only one
         else{
-                $rooms[$counter]['headings'] = ['Name','Available','Floor','Room No','Per Room Price'];
+               
                 $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
                 $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'] ? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
