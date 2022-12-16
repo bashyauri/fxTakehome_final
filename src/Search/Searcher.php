@@ -103,7 +103,7 @@ class Searcher
                 $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'] ? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
                 $rooms[$counter]['Room No'] = $this->roomsFound[$counter]['Room No'];
-                $rooms[$counter]['Per Room Price'] = $this->roomsFound[$counter]['Per Room Price'];
+                $rooms[$counter]['Per Room Price'] = (float)$this->roomsFound[$counter]['Per Room Price'];
             }
               
         }
@@ -141,10 +141,13 @@ $search->add($hotels);
 $criteria1 = $search->search(2,20,30);
 
 print("Criteria One\n");
-print("Name    | Available|Floor|Room No|Per Room Price\n");
+print("Name      | Available|Floor|Room No|Per Room Price\n");
+
 foreach ($criteria1 as $key => $value) {
-   
-   echo $criteria1[$key]['Name'].'   '.$criteria1[$key]['Available'].'     '.$criteria1[$key]['Floor'].'       '.$criteria1[$key]['Room No'].'      '.$criteria1[$key]['Per Room Price']."\n";
+    
+    echo $criteria1[$key]['Name'].'  |  '.$criteria1[$key]['Available'].
+    '    |  '.$criteria1[$key]['Floor'].'  |    '.$criteria1[$key]['Room No'].'  |   '.number_format($criteria1[$key]['Per Room Price'], 2, '.', '')."  |  ";
+    print("\n");
     
 }
 
@@ -152,7 +155,7 @@ foreach ($criteria1 as $key => $value) {
 
 print("\n");
 print("Criteria Two\n");
-print("Name    | Available|Floor|Room No|Per Room Price\n");
+print("Name      | Available|Floor|Room No|Per Room Price\n");
 
 // Test Criteria 2
 $criteria2 = $search->search(2,30,50);
@@ -160,19 +163,22 @@ $criteria2 = $search->search(2,30,50);
 
 foreach ($criteria2 as $key => $value) {
     
-    echo $criteria2[$key]['Name'].'   '.$criteria2[$key]['Available'].'     '.$criteria2[$key]['Floor'].'       '.$criteria2[$key]['Room No'].'      '.$criteria2[$key]['Per Room Price']."\n";
-    
+    echo $criteria2[$key]['Name'].'  |  '.$criteria2[$key]['Available'].
+    '    |  '.$criteria2[$key]['Floor'].'  |    '.$criteria2[$key]['Room No'].'  |   '.number_format($criteria2[$key]['Per Room Price'], 2, '.', '')."  |  ";
+    print("\n");
 
     //echo $criteria2[$key]['Name'].' '.$criteria2[$key]['Available'].' '.$criteria2[$key]['Floor'].' '.$criteria2[$key]['Room No'].'  '.$criteria2[$key]['Per Room Price']."\n";
     
 }
 print("\n");
 print("Criteria Three\n");
-print("Name    | Available|Floor|Room No|Per Room Price\n");
+print("Name      | Available|Floor|Room No|Per Room Price\n");
 // Test Criteria 3
 $criteria3 = $search->search(1,25,40);
 foreach ($criteria3 as $key => $value) {
-    echo $criteria3[$key]['Name'].'   '.$criteria3[$key]['Available'].'     '.$criteria3[$key]['Floor'].'       '.$criteria3[$key]['Room No'].'      '.$criteria3[$key]['Per Room Price']."\n";
+    echo $criteria3[$key]['Name'].'  |  '.$criteria3[$key]['Available'].
+    '    |  '.$criteria3[$key]['Floor'].'  |    '.$criteria3[$key]['Room No'].'  |   '.number_format($criteria3[$key]['Per Room Price'], 2, '.', '')."  |  ";
+    print("\n");
    // echo $criteria3[$key]['Name'].' '.$criteria3[$key]['Available'].' '.$criteria3[$key]['Floor'].' '.$criteria3[$key]['Room No'].'  '.$criteria3[$key]['Per Room Price']."\n";
     
 }

@@ -32,6 +32,7 @@ class SearcherTest extends TestCase
         
      
         $searcher = new Searcher();
+        $searcher->search(0, 0, 0);
         
        //$this->expectDeprecationMessage('Method not implemented');
        $this->assertIsArray($hotels);
