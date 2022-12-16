@@ -13,17 +13,6 @@ class SearcherTest extends TestCase
 
     public function testSearchDoesReturnEmptyArray(): void
     {
-
-        
-     
-        $searcher = new Searcher();
-        
-       //$this->expectDeprecationMessage('Method not implemented');
-        
-        $this->assertEmpty($searcher->search(0, 0, 0));
-       
-    }
-    public function testIsArray(){
         $hotels = [
             ['id'=>1,'Name'=>'Hostel A','Available'=>False,'Floor'=>1,'Room No'=>1,'Per Room Price'=>25.80],
             ['id'=>2,'Name'=>'Hostel A','Available'=>False,'Floor'=>1,'Room No'=>2,'Per Room Price'=>25.80],
@@ -40,11 +29,18 @@ class SearcherTest extends TestCase
             ['id'=>13,'Name'=>'Hostel B','Available'=>False,'Floor'=>2,'Room No'=>6,'Per Room Price'=>49.80],
             ['id'=>14,'Name'=>'Hostel B','Available'=>False,'Floor'=>2,'Room No'=>7,'Per Room Price'=>49.80]];
         
-        $this->assertIsArray(
-            $hotels,
-            "assert variable is array or not"
-        );
+        
+     
+        $searcher = new Searcher();
+        
+       //$this->expectDeprecationMessage('Method not implemented');
+       $this->assertIsArray($hotels);
+        $this->assertIsArray($searcher->search(2,20,30));
+        $this->assertEmpty($searcher->search(0, 0, 0));
+       
+       
     }
+    
    
     
     

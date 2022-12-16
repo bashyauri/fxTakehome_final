@@ -59,12 +59,14 @@ class Searcher
     
         // filter on rooms that are within the price specified
        while ($counter < count($this->roomsFound) ) { 
-        
+        // check if the room price is within range
         if ( $this->roomsFound[$counter]['Per Room Price'] >= $minimum  && $this->roomsFound[$counter]['Per Room Price'] <= $maximum){
                
                  
-               
+         //if room required is more than 1 
+          
         if ($roomsRequired > 1){
+            
             if(isset($this->roomsFound[$counter]['Room No']))
             {
                 $last_room = $this->roomsFound[$counter]['Room No'];
@@ -77,6 +79,7 @@ class Searcher
                 $current_floor = $this->roomsFound[$counter]['Floor'];
         
             } 
+            // The rooms are adjacent and on the same floor
             if ($last_room < $current_room  &&  $prev_floor == $current_floor )
             {
           
@@ -87,14 +90,14 @@ class Searcher
                 $rooms[$counter]['Per Room Price'] = $this->roomsFound[$counter]['Per Room Price'];
             }
         }
-    else
-    {
-        $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
+        // if room required is only one
+        else{
+                $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
                 $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'];
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
                 $rooms[$counter]['Room No'] = $this->roomsFound[$counter]['Room No'];
                 $rooms[$counter]['Per Room Price'] = $this->roomsFound[$counter]['Per Room Price'];
-    }
+            }
               
         }
         
@@ -127,12 +130,12 @@ $hotels = [
     ['id'=>14,'Name'=>'Hostel B','Available'=>False,'Floor'=>2,'Room No'=>7,'Per Room Price'=>49.80]];
 $search =new Searcher();
 $search->add($hotels);
-
+// Test Criteria 1
 $criteria1 = $search->search(2,20,30);
 
-
+print("Criteria One\n");
 foreach ($criteria1 as $key => $value) {
-    echo $criteria1[$key]['Name'].' '.$criteria1[$key]['Floor'].' '.$criteria1[$key]['Per Room Price']."\n";
+    echo $criteria1[$key]['Name'].' '.$criteria1[$key]['Available'].' '.$criteria1[$key]['Floor'].' '.$criteria1[$key]['Room No'].'  '.$criteria1[$key]['Per Room Price']."\n";
     
 }
 
@@ -140,17 +143,17 @@ foreach ($criteria1 as $key => $value) {
 
 print("\n");
 print("Criteria Two\n");
-
+// Test Criteria 2
 $criteria2 = $search->search(2,30,50);
 foreach ($criteria2 as $key => $value) {
-    echo $criteria2[$key]['Name'].' '.$criteria2[$key]['Floor'].' '.$criteria2[$key]['Per Room Price']."\n";
+    echo $criteria2[$key]['Name'].' '.(bool)$criteria2[$key]['Available'].' '.$criteria2[$key]['Floor'].' '.$criteria2[$key]['Room No'].'  '.$criteria2[$key]['Per Room Price']."\n";
     
 }
 print("\n");
 print("Criteria Three\n");
-
+// Test Criteria 3
 $criteria3 = $search->search(1,25,40);
 foreach ($criteria3 as $key => $value) {
-    echo $criteria3[$key]['Name'].' '.$criteria3[$key]['Floor'].' '.$criteria3[$key]['Per Room Price']."\n";
+    echo $criteria3[$key]['Name'].' '.(bool)$criteria3[$key]['Available'].' '.$criteria3[$key]['Floor'].' '.$criteria3[$key]['Room No'].'  '.$criteria3[$key]['Per Room Price']."\n";
     
 }
