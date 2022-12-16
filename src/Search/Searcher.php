@@ -84,7 +84,7 @@ class Searcher
             {
           
                 $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
-                $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available']? "True":"False";
+                $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'] ? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
                 $rooms[$counter]['Room No'] = $this->roomsFound[$counter]['Room No'];
                 $rooms[$counter]['Per Room Price'] = $this->roomsFound[$counter]['Per Room Price'];
