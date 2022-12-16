@@ -84,7 +84,7 @@ class Searcher
             {
           
                 $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
-                $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'];
+                $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available']? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
                 $rooms[$counter]['Room No'] = $this->roomsFound[$counter]['Room No'];
                 $rooms[$counter]['Per Room Price'] = $this->roomsFound[$counter]['Per Room Price'];
@@ -93,7 +93,7 @@ class Searcher
         // if room required is only one
         else{
                 $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
-                $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'];
+                $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'] ? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
                 $rooms[$counter]['Room No'] = $this->roomsFound[$counter]['Room No'];
                 $rooms[$counter]['Per Room Price'] = $this->roomsFound[$counter]['Per Room Price'];
@@ -134,8 +134,10 @@ $search->add($hotels);
 $criteria1 = $search->search(2,20,30);
 
 print("Criteria One\n");
+
 foreach ($criteria1 as $key => $value) {
-    echo $criteria1[$key]['Name'].' '.$criteria1[$key]['Available'].' '.$criteria1[$key]['Floor'].' '.$criteria1[$key]['Room No'].'  '.$criteria1[$key]['Per Room Price']."\n";
+   
+   echo $criteria1[$key]['Name'].' '.$criteria1[$key]['Available'].' '.$criteria1[$key]['Floor'].' '.$criteria1[$key]['Room No'].'  '.$criteria1[$key]['Per Room Price']."\n";
     
 }
 
@@ -143,10 +145,16 @@ foreach ($criteria1 as $key => $value) {
 
 print("\n");
 print("Criteria Two\n");
+
 // Test Criteria 2
 $criteria2 = $search->search(2,30,50);
+$columns = ['Name','Available','Floor','Room No','Per Room Price'];
+
 foreach ($criteria2 as $key => $value) {
-    echo $criteria2[$key]['Name'].' '.(bool)$criteria2[$key]['Available'].' '.$criteria2[$key]['Floor'].' '.$criteria2[$key]['Room No'].'  '.$criteria2[$key]['Per Room Price']."\n";
+    
+    
+
+    echo $criteria2[$key]['Name'].' '.$criteria2[$key]['Available'].' '.$criteria2[$key]['Floor'].' '.$criteria2[$key]['Room No'].'  '.$criteria2[$key]['Per Room Price']."\n";
     
 }
 print("\n");
@@ -154,6 +162,6 @@ print("Criteria Three\n");
 // Test Criteria 3
 $criteria3 = $search->search(1,25,40);
 foreach ($criteria3 as $key => $value) {
-    echo $criteria3[$key]['Name'].' '.(bool)$criteria3[$key]['Available'].' '.$criteria3[$key]['Floor'].' '.$criteria3[$key]['Room No'].'  '.$criteria3[$key]['Per Room Price']."\n";
+    echo $criteria3[$key]['Name'].' '.$criteria3[$key]['Available'].' '.$criteria3[$key]['Floor'].' '.$criteria3[$key]['Room No'].'  '.$criteria3[$key]['Per Room Price']."\n";
     
 }
