@@ -82,7 +82,7 @@ class Searcher
             // The rooms are adjacent and on the same floor
             if ($last_room < $current_room  &&  $prev_floor == $current_floor )
             {
-          
+               
                 $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
                 $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'] ? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
@@ -92,6 +92,7 @@ class Searcher
         }
         // if room required is only one
         else{
+                $rooms[$counter]['headings'] = ['Name','Available','Floor','Room No','Per Room Price'];
                 $rooms[$counter]['Name'] = $this->roomsFound[$counter]['Name'];
                 $rooms[$counter]['Available'] = $this->roomsFound[$counter]['Available'] ? "True":"False";
                 $rooms[$counter]['Floor'] = $this->roomsFound[$counter]['Floor'];
@@ -136,6 +137,7 @@ $criteria1 = $search->search(2,20,30);
 print("Criteria One\n");
 
 foreach ($criteria1 as $key => $value) {
+   
    
    echo $criteria1[$key]['Name'].' '.$criteria1[$key]['Available'].' '.$criteria1[$key]['Floor'].' '.$criteria1[$key]['Room No'].'  '.$criteria1[$key]['Per Room Price']."\n";
     
