@@ -41,9 +41,7 @@ class Searcher
       
         
     }
-
-    
-    public function search(int $roomsRequired, $minimum, $maximum):array
+   public function search(int $roomsRequired, $minimum, $maximum):array
     {
        
         $count = 0;
@@ -69,7 +67,7 @@ class Searcher
             
             if(isset($this->roomsFound[$counter]['Room No']))
             {
-                $last_room = $this->roomsFound[$counter]['Room No'];
+                $last_room = $this->roomsFound[$counter-1]['Room No'];
                 $prev_floor = $this->roomsFound[$counter]['Floor'];
             
             }
@@ -150,7 +148,7 @@ print("Criteria Two\n");
 
 // Test Criteria 2
 $criteria2 = $search->search(2,30,50);
-$columns = ['Name','Available','Floor','Room No','Per Room Price'];
+
 
 foreach ($criteria2 as $key => $value) {
     
