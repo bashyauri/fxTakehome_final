@@ -76,6 +76,7 @@ class Searcher
             if(isset($this->roomsFound[$counter]['Room No']))
             {
                 $index =$counter-1;
+                // Check if index is valid
                 if ($index >= 0){
                     $last_room = $this->roomsFound[$counter-1]['Room No'];
                 }
