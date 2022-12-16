@@ -45,6 +45,8 @@ class Searcher
     {
        
         $count = 0;
+        $last_room=0;
+        $prev_floor =0;
         
       
         $rooms = array(); 
@@ -65,18 +67,23 @@ class Searcher
           
         if ($roomsRequired > 1){
             
-            if(isset($this->roomsFound[$counter]['Room No']))
-            {
-                $last_room = $this->roomsFound[$counter-1]['Room No'];
-                $prev_floor = $this->roomsFound[$counter]['Floor'];
-            
-            }
             if(isset($this->roomsFound[$counter + 1]['Room No'])){
         
                 $current_room = $this->roomsFound[$counter +1]['Room No'];
                 $current_floor = $this->roomsFound[$counter]['Floor'];
         
             } 
+            if(isset($this->roomsFound[$counter]['Room No']))
+            {
+                $index =$counter-1;
+                if ($index >= 0){
+                    $last_room = $this->roomsFound[$counter-1]['Room No'];
+                }
+               
+                $prev_floor = $this->roomsFound[$counter]['Floor'];
+            
+            }
+            
             // The rooms are adjacent and on the same floor
             if ($last_room < $current_room  &&  $prev_floor == $current_floor )
             {
